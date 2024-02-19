@@ -1,20 +1,22 @@
 import style from './Comment.module.css'
-import {GetPosts} from '../service/ApiService'
+import React from "react";
 
-const Comment = (props) =>{
-    const Ipost = props.comments.postId;
-    const handleClick = () =>{
-        GetPosts.handlePosts(Ipost);
-
+class Comment extends React.Component{
+    constructor(props){
+        super(props);
+        this.Ipost = props.comments.postId;
+        this.comments = props.comments;
     }
+   render(){
     return(
-        <div className={style.commentBox} onClick={handleClick}>
-            <h2>postId: {props.comments.postId}</h2>
-            <h2>id: {props.comments.id}</h2>
-            <h3>name: {props.comments.name}</h3>
-            <h4>{props.comments.email}</h4>
-            <h4>{props.comments.body}</h4>
+        <div className={style.commentBox} >
+            <h2>postId: {this.comments.postId}</h2>
+            <h2>id: {this.comments.id}</h2>
+            <h3>name: {this.comments.name}</h3>
+            <h4>{this.comments.email}</h4>
+            <h4>{this.comments.body}</h4>
         </div>
     );
+   }
 }
 export default Comment;
